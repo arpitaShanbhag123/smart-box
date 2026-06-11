@@ -17,7 +17,7 @@ annual_maintenance = 1000
 # labor downtime from missing tools
 tech_count = 65
 hours_lost_per_tech_week = 1
-hourly_rate = 30 # confirm with Ryan
+hourly_rate = 100 # get a finalized number later
 
 weekly_downtime_hours = tech_count * hours_lost_per_tech_week
 weekly_downtime_cost = weekly_downtime_hours * hourly_rate
@@ -35,17 +35,17 @@ tool_cost_distribution = [
 
 def simulate_yearly_tool_loss(tools_lost_per_month, cost_distribution):
     losses = []
-    for _ in range(tools_lost_per_month * 12):
+    for i in range(tools_lost_per_month * 12):
         losses.append(random.choice(cost_distribution))
     return sum(losses)
 
 # tool loss cost 
 annual_tool_loss_cost = simulate_yearly_tool_loss(tools_lost_per_month, tool_cost_distribution)
 
-# Total annual cost (replacement + downtime)
+# total annual cost (replacement + downtime)
 total_annual_loss = annual_tool_loss_cost + annual_downtime_cost
 
-#cost calculations
+# cost calculations
 
 cumulative_losses = np.cumsum([total_annual_loss] * years)
 smart_costs = [smart_toolbox_cost + annual_maintenance * i for i in range(years)]
