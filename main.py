@@ -13,8 +13,8 @@ tools_lost_per_week = 1
 tools_lost_per_month = tools_lost_per_week * 4
 
 # smart toolbox estimated cost
-smart_toolbox_cost = 6000
-annual_maintenance = 1000
+smart_toolbox_cost = 23000
+annual_maintenance = 0
 
 # labor downtime from missing tools
 tech_count = 75
